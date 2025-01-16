@@ -3,11 +3,13 @@ package com.recordshop.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "item_img")
 @Getter
 @Setter
+@ToString
 public class ItemImg extends BaseEntity{
 
     @Id

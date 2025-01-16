@@ -12,4 +12,10 @@ public class CartOrderDto {
     private Long cartItemId;
 
     private List<CartOrderDto> cartOrderDtoList;
+
+    private String nickName;
+
+    private String address;
+
+    private String phoneNumber;
 }

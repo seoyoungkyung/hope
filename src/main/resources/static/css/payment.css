@@ -1,0 +1,195 @@
+.payment_wrap {
+    width: 1200px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.pay_h2 {
+    width: 300px;
+    height: 100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 32px;
+}
+
+.product_name {
+    text-align: left;
+}
+
+.rounded {
+    width: 150px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.count {
+    width: 50px;
+}
+
+.total_pay {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.delivery-notice {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.delivery-h4 {
+    width: 85%;
+    margin: 0 auto;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.delivery-notice form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.delivery-box {
+    width: 85%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.payment_table {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.total_pay.pay_h3 {
+    width: 90%;
+    height: 50px;
+    margin: 0 auto;
+}
+
+.delivery-boxin {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.delivery-boxin input {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 35px;
+    background-color: ghostwhite;
+    border: 1px solid #eeeeee;
+}
+
+.modify_btn {
+    width: 120px;
+    height: 40px;
+    border: 1px solid #eeeeee;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modify_btn:hover {
+    opacity: 0.8;
+    background-color: #949494;
+}
+
+.method_h4 {
+    font-size: 20px;
+    font-weight: 500;
+    width: 30%;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.pay_method {
+    width: 85%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    margin: 40px auto 10px;
+}
+
+.right_arrow {
+    width: 5%;
+    margin-right: 15px;
+}
+
+.right_arrow img {
+    width: 70%;
+}
+
+.pay_method_box {
+    width: 68%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.kakaopay_img.selected {
+    border: 2px solid #797979;
+}
+
+.kakaopay_img img {
+    width: 90px;
+    height: 30px;
+}
+
+.kakaopay_img {
+    width: 200px;
+    height: 150px;
+    background-color: #f5f5ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    border-radius: 5px;
+    margin-right: 20px;
+    cursor: pointer;
+    padding: 10px;
+    border: 2px solid transparent;
+    transition: border 0.3s;
+}
+
+.inicisPay img {
+    width: 100px;
+    height: 40px;
+}
+
+.final_pay {
+    width: 85%;
+    height: auto;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    margin: 0 auto 30px;
+}
+
+.final_h4 {
+    width: 100%;
+    font-size: 20px;
+    font-weight: 500;
+    margin: 20px 0 20px 20px;
+}
+
+.payment_btn {
+    width: 120px;
+    height: 50px;
+    border: 1px solid #eeeeee;
+    border-radius: 5px;
+}
+
+.payment_btn:hover {
+    background-color: #d7d7d7;
+    opacity: 0.9;
+    border: 1px solid #afafaf;
+}

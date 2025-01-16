@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+
+<th:block layout:fragment="css">
+  <link th:href="@{/css/inquiry.css}" rel="stylesheet">
+</th:block>
+
+<th:block layout:fragment="script">
+  <script th:src="@{/js/inquiry.js}"></script>
+</th:block>
+
+<div layout:fragment="content">
+
+  <div class="back2">
+    <img src="/image/back3.jpg" alt="뒤로가기" onclick="history.back(-1)" class="back2I">
+  </div>
+
+  <div class="iForm_wrap">
+    <form role="form" method="post" enctype="multipart/form-data" th:object="${answerFormDto}">
+
+      <p class="h2">답글 작성</p>
+
+      <!-- 답변 내용 -->
+      <div class="input-group product_detail">
+        <div class="input-group-prepend product_Dname">
+          <span class="input-group-text">답변 내용:</span>
+        </div>
+        <textarea class="form-control product_Dtext" aria-label="With textarea" th:field="*{answer}" placeholder="답변 내용을 입력해주세요" rows="5"></textarea>
+      </div>
+      <p th:if="${#fields.hasErrors('answer')}" th:errors="*{answer}" class="fieldError">Incorrect data</p>
+
+      <!-- 제출 버튼 -->
+      <div style="text-align: center">
+        <button th:formaction="@{'/inquiries/answer/' + ${inquiry.id}}" type="submit" class="btn btn-primary">답변 달기</button>
+      </div>
+
+    </form>
+  </div>
+
+</div>
+
+</html>

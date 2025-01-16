@@ -16,7 +16,11 @@ public class ItemDto {
 
     private String itemDetail;
 
+    private String itemText;
+
     private String sellStatCd;
+
+    private String category;
 
 
 }

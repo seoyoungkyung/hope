@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layouts/layout1}">
+
+
+<th:block layout:fragment="css">
+    <link th:href="@{/css/inquiry.css}" rel="stylesheet">
+</th:block>
+
+
+<div layout:fragment="content">
+
+    <div class="back2">
+        <img src="/image/back3.jpg" alt="뒤로가기" onclick="history.back(-1)" class="back2I">
+    </div>
+
+    <div class="iForm_wrap">
+        <p class="h2">문의글 상세</p>
+
+        <!-- 문의 제목 -->
+        <div class="form-group">
+            <label>제목</label>
+            <p th:text="${inquiry.title}" class="form-control-plaintext"></p>
+        </div>
+
+        <!-- 문의 내용 -->
+        <div class="form-group">
+            <label>문의 내용</label>
+            <p th:text="${inquiry.content}" class="form-control-plaintext"></p>
+        </div>
+
+        <!-- 작성자 정보 (선택사항) -->
+<!--        <div class="form-group">-->
+<!--            <label>작성자</label>-->
+<!--            <p th:text="${inquiry.memberNickName}" class="form-control-plaintext"></p>-->
+<!--        </div>-->
+
+        <div class="form-group" th:if="${inquiry.answer != null}">
+            <label>문의 답변</label>
+            <p th:text="${inquiry.answer.answer}" class="form-control-plaintext"></p>
+        </div>
+
+        <!-- 돌아가기 버튼 -->
+        <div style="text-align: center; margin-top: 20px;" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
+            <a th:href="@{/inquiries/admin/list}" class="btn btn-secondary" style="display: inline-block;">목록으로</a>
+
+            <!-- 답변이 없을 경우만 "답변 달기" 버튼 보이기 -->
+            <div th:if="${inquiry.answer == null}" style="display: inline-block; margin-left: 10px;">
+                <a th:href="'/inquiries/answer/' + ${inquiry.id}" class="btn btn-modify">답변달기</a>
+            </div>
+
+            <!-- 답변이 있을 경우만 수정/삭제 버튼 보이기 -->
+            <div th:if="${inquiry.answer != null}" style="display: inline-block; margin-left: 10px;">
+                <!-- 답글 수정 버튼 -->
+                <a th:href="'/inquiries/answer/modify/' + ${inquiry.answer.id}" class="btn btn-modify">답글 수정</a>
+
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 20px;" sec:authorize="hasAnyAuthority('ROLE_USER')">
+            <a th:href="@{/inquiries/list}" class="btn btn-secondary">목록으로</a>
+            <a th:href="'/inquiries/modify/' + ${inquiry.id}" class="btn btn-primary">수정</a>
+            <form th:action="'/inquiries/modify/' + ${inquiry.id}" method="post" style="display: inline;">
+                <!-- POST로 가는 메소드를 DELETE로 변환하여 DeleteMapping으로 실행 -->
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit" class="btn btn-danger">삭제</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+</html>

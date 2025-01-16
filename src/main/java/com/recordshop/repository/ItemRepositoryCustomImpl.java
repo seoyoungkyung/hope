@@ -1,9 +1,11 @@
 package com.recordshop.repository;
 
 import com.querydsl.core.QueryResults;
+import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.Wildcard;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.recordshop.constant.Category;
 import com.recordshop.constant.ItemSellStatus;
 import com.recordshop.dto.ItemSearchDto;
 import com.recordshop.dto.MainItemDto;
@@ -99,11 +101,8 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
         List<MainItemDto> content = queryFactory
                 .select(
                         new QMainItemDto(
-                                item.id,
-                                item.itemNm,
-                                item.itemDetail,
-                                itemImg.imgUrl,
-                                item.price
+                                item,
+                                itemImg
                         )
                 )
                 .from(itemImg)
@@ -133,4 +132,5 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom {
 
         return new PageImpl<>(content, pageable, total);
     }   //end getMainItemPage
+
 }

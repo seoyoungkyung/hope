@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 26.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 17.2 20.5" style="enable-background:new 0 0 17.2 20.5;" xml:space="preserve">
+<style type="text/css">
+.st0{fill:#D753FF;stroke:#000000;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;transform:rotate(180deg);transform-origin:15% 78%;animation:height_ani both infinite 2.2s 0.3s;}
+.st1{fill:#FFEE2B;stroke:#000000;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;transform:rotate(180deg);transform-origin:50% 78%;animation:height_ani both infinite 2.2s 0s;}
+.st2{fill:#57D927;stroke:#000000;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;transform:rotate(180deg);transform-origin:85% 78%;animation:height_ani both infinite 2.2s 0.6s;}
+.st3{fill:#fff;stroke:#000000;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round;}
+    
+@keyframes height_ani {
+0% {height:10px}
+50% {height:4px;}
+100% {height:10px;}
+}
+@keyframes c1 {
+0% {transform:translateY(0);}
+50% {transform:translateY(1px);}
+100% {transform:translateY(0);}
+}
+@keyframes c2 {
+0% {transform:translateY(0);}
+50% {transform:translateY(-3px);}
+100% {transform:translateY(0);}
+}
+@keyframes c3 {
+0% {transform:translateY(0);}
+50% {transform:translateY(4px);}
+100% {transform:translateY(0);}
+}
+    
+#c1 {animation:c1 both infinite 2.2s;}
+#c2 {animation:c2 both infinite 2.2s 0.3s;}
+#c3 {animation:c3 both infinite 2.2s 0.3s;}
+    
+#l1 {animation:l1 both infinite 2.2s 0.3s;transform-origin:30% 30%;}
+#l2 {animation:l2 both infinite 2.2s 0.3s;transform-origin:70% 25%;}
+
+@keyframes l1 {
+0% {transform:rotate(-1deg) translateY(0);}
+50% {transform:rotate(-40deg) translateY(-0.5px);}
+100% {transform:rotate(-1deg) translateY(0);}
+}
+    
+
+
+@keyframes l2 {
+0% {transform:rotate(-5deg) translateY(0);}
+50% {transform:rotate(50deg) translateY(1px);}
+100% {transform:rotate(-5deg) translateY(0);}
+}
+    
+</style>
+<g id="b1">
+	<rect id="Rectangle_20475" x="0.6" y="11.9" class="st0" width="4" height="8"/>
+</g>
+<g id="b2" class="st s2">
+	<rect id="Rectangle_20476" x="6.6" y="11.9" class="st1" width="4" height="8"/>
+</g>
+<g id="b3" class="st s3">
+	<rect id="Rectangle_20477" x="12.6" y="11.9" class="st2" width="4" height="8"/>
+</g>
+<g id="l1">
+	<path id="Path_37370" class="st3" d="M7.3,7.3L3.9,6.2l0,0L7.3,7.3L7.3,7.3z"/>
+</g>
+<g id="l2">
+	<path id="Path_37369" class="st3" d="M9.7,6.7L9.7,6.7l4-3.8l0,0L9.7,6.7z"/>
+</g>
+<g id="c1">
+	<circle id="Ellipse_697" class="st3" cx="2.5" cy="5.8" r="1.4"/>
+</g>
+<g id="c2">
+	<circle id="Ellipse_698" class="st3" cx="8.7" cy="7.6" r="1.4"/>
+</g>
+<g id="c3">
+	<circle id="Ellipse_699" class="st3" cx="14.8" cy="2" r="1.4"/>
+</g>
+    
+
+</svg>

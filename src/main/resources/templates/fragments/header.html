@@ -1,7 +1,33 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout">
 
-    <div th:fragment="header">
-        header 영역입니다.
+<div th:fragment="header" class="nav_bar">
+
+  <nav class="navigation">
+
+    <div class="nav_l">
+      <a href="/">
+        <img class="icon_img" th:src="@{/image/logo.png}" alt="icon">
+        <h3>MuseOn</h3>
+      </a>
     </div>
+
+    <div class="nav_r">
+
+      <a href="/members/myPage">
+        <img class="mypage_img" th:src="@{/image/mypage.png}" alt="mypage">
+      </a>
+
+      <a href="/cart">
+        <img class="bag_img" th:src="@{/image/bag.png}" alt="bag">
+      </a>
+
+    </div>
+
+  </nav>
+
+</div>
+
 </html>

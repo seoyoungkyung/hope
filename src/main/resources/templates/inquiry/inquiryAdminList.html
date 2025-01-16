@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<th:block layout:fragment="css">
+    <link th:href="@{/css/inquiry.css}" rel="stylesheet">
+</th:block>
+
+<div layout:fragment="content">
+
+    <div class="back2">
+        <img src="/image/back3.jpg" alt="뒤로가기" onclick="history.back(-1)" class="back2I">
+    </div>
+
+    <div th:class="mypage_wrap">
+
+        <div class="write">
+            <h1>1:1 문의 관리</h1>
+        </div>
+
+        <div class="statusFilterWrapper">
+            <ul class="statusFilter">
+                <li class="statusItem">
+                    <a th:href="@{'/inquiries/admin/list'}">전체 문의</a>
+                </li>
+                <li class="statusItem">
+                    <a th:href="@{'/inquiries/admin/list?answerStatus=WAITING'}"
+                       th:classappend="${answerStatus == 'WAITING' ? 'active' : ''}">답변 대기</a>
+                </li>
+                <li class="statusItem">
+                    <a th:href="@{'/inquiries/admin/list?answerStatus=COMPLETED'}"
+                       th:classappend="${answerStatus == 'COMPLETED' ? 'active' : ''}">답변 완료</a>
+                </li>
+            </ul>
+        </div>
+
+        <table class="table">
+            <thead class="table-text">
+            <tr>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>등록일</th>
+                <th>수정일</th>
+                <th>답변상태</th>
+                <th>상세보기</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="inquiry : ${allInquiries.content}">
+                <td th:text="${inquiry.title}"></td> <!-- 제목 -->
+                <td th:text="${inquiry.member.username}"></td> <!-- 작성자 -->
+                <td th:text="${inquiry.formattedRegTime}"></td> <!-- 작성날자 -->
+                <td th:text="${inquiry.formattedUpdateTime}"></td> <!-- 수정날자 -->
+                <td th:text="${inquiry.answerStatus}"></td> <!-- 답변 상태 -->
+                <td>
+                    <a th:href="'/inquiries/' + ${inquiry.id}">상세보기</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- 페이징 처리 -->
+<!--        <div style="text-align: center">-->
+<!--            <a th:if="${currentPage > 0}" th:href="@{/admin/list/{page}(page=${currentPage - 1})}">이전</a>-->
+<!--            <span th:text="${currentPage + 1}"></span> / <span th:text="${allInquiries.totalPages}"></span>-->
+<!--            <a th:if="${currentPage + 1 < allInquiries.totalPages}" th:href="@{/admin/list/{page}(page=${currentPage + 1})}">다음</a>-->
+<!--        </div>-->
+        <div th:with="start=${(allInquiries.number/maxPage)*maxPage + 1}, end=(${(allInquiries.totalPages == 0) ? 1 : (start + (maxPage - 1) < allInquiries.totalPages ? start + (maxPage - 1) : allInquiries.totalPages)})" >
+            <ul class="pagination justify-content-center mb-3">
+                <li class="page-item" th:classappend="${allInquiries.number eq 0}?'disabled':''">
+                    <a th:href="@{'/inquiries/admin/list' + '?answerStatus=' + ${answerStatus != null ? answerStatus : ''} + '&page=' + ${allInquiries.number-1}}" aria-label='Previous' class="page-link2">
+                        <span aria-hidden='true'>이전</span>
+                    </a>
+                </li>
+
+                <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${allInquiries.number eq page - 1}?'active':''">
+                    <a th:href="@{'/inquiries/admin/list' + '?answerStatus=' + ${answerStatus != null ? answerStatus : ''} + '&page=' + ${page - 1}}" th:inline="text" class="page-link2">[[${page}]]</a>
+                </li>
+
+                <li class="page-item" th:classappend="${allInquiries.number+1 ge allInquiries.totalPages}?'disabled':''">
+                    <a th:href="@{'/inquiries/admin/list' + '?answerStatus=' + ${answerStatus != null ? answerStatus : ''} + '&page=' + ${allInquiries.number+1}}" aria-label='Next' class="page-link2">
+                        <span aria-hidden='true'>다음</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+</html>

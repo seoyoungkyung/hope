@@ -17,10 +17,17 @@ public class FileService {
         UUID uuid = UUID.randomUUID();
 
         String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
+        log.info("extension --->"+extension);
+
         String savedFileName = uuid.toString() + extension;
+        log.info("savedFileName --->"+savedFileName);
+
         String fileUploadFullUrl = uploadPath + "/" + savedFileName;
+        log.info("fileUploadFullUrl --->"+fileUploadFullUrl);
 
         FileOutputStream fos = new FileOutputStream(fileUploadFullUrl);
+
+        log.info("fos --->"+fos);
         fos.write(fileData);
         fos.close();
         return savedFileName;
@@ -28,13 +35,13 @@ public class FileService {
 
     public void deleteFile(String filePath) throws Exception {
 
-        File deleteFile = new File(filePath);
+        File file = new File(filePath);
 
-        if(deleteFile.exists()){
-            deleteFile.delete();
-            log.info("파일을 삭제 하였습니다.");
-        }else {
-            log.info("파일이 존재하지 않습니다.");
+        if(file.exists()){
+           boolean delete = file.delete();
+           if (!delete) {
+               throw new RuntimeException("삭제에 실패 하였습니다." + filePath);
+           }
         }
-    }
+    } //end deleteFile
 }

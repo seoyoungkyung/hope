@@ -1,0 +1,63 @@
+
+
+body {
+    /*background: #eee;*/
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+.swiper-container {
+    overflow: hidden; /* 수평 스크롤 방지 */
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.swiper_h1 {
+    position: absolute;
+    top: 45%;
+    left: 37%;
+    color: white;
+    font-size: 70px;
+}
+
+.swiper-pagination-bullet-active {
+    background: white !important;
+}
+
+.swiper-button-prev {
+    color: lavender !important;
+}
+
+.swiper-button-prev:after {
+    margin-left: 25px;
+}
+
+.swiper-button-next {
+    color: lavender !important;
+}
+
+.swiper-button-next:after {
+    margin-right: 25px;
+}

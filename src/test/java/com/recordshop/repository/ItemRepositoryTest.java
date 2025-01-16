@@ -1,5 +1,6 @@
 package com.recordshop.repository;
 
+import com.recordshop.constant.Category;
 import com.recordshop.constant.ItemSellStatus;
 import com.recordshop.entity.Item;
 import org.junit.jupiter.api.DisplayName;
@@ -25,6 +26,7 @@ class ItemRepositoryTest {
         item.setPrice(1000);
         item.setItemDetail("테스트 상품 상세 설명");
         item.setItemSellStatus(ItemSellStatus.SELL);
+        item.setCategory(Category.ALBUM);
         Item savedItem = itemRepository.save(item);
         System.out.println(savedItem.toString());
     }

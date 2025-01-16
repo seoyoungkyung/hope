@@ -1,0 +1,308 @@
+.justify-content-end{
+    padding: 10px;
+}
+
+.justify-content-center{
+    padding: 10px;
+}
+
+.sb{
+    margin: 0 10px;
+    line-height: 1;
+}
+
+td{
+    text-align: center;
+}
+
+.form-inline{
+    width: 1500px;
+}
+
+.table{
+    width: 1000px;
+    margin: 5px auto;
+}
+
+.iForm_wrap {
+    width: 1000px;
+    margin: 50px auto;
+}
+
+/* 전체 페이지 스타일 */
+.mypage_wrap {
+    width: 1300px;
+    margin: 0 auto;
+    padding: 30px 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* 제목 스타일 */
+.write h1 {
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* 상태 필터 스타일 */
+.statusFilterWrapper {
+    margin: 20px 0;
+    text-align: left;
+}
+
+.statusFilter {
+    list-style: none;
+    padding: 0;
+    display: inline-flex;
+    gap: 30px;
+}
+
+.statusItem a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: #666;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.statusItem a:hover,
+.statusItem a.active {
+
+    font-weight: 500;
+    box-shadow: 0 2px 10px rgba(34, 36, 37, 0.3);
+}
+
+/* 테이블 스타일 */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.table-text {
+    background-color: #f0f4f7;
+}
+
+.table th, .table td {
+    padding: 15px;
+    text-align: left;
+    font-size: 1rem;
+    color: #444;
+}
+
+.table th {
+    background-color: gray;
+    color: white;
+    font-weight: 500;
+}
+
+.table td {
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.table td a {
+    text-decoration: none;
+    color: gray;
+    transition: all 0.3s ease;
+}
+
+.table td a:hover {
+    color: #6d6d6d;
+    font-weight: bold;
+}
+
+/* 페이징 스타일 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.page-item.disabled .page-link2 {
+    pointer-events: none;
+    color: black;
+}
+
+.page-item .page-link2 {
+    padding: 12px 20px;
+    font-size: 1rem;
+    color: black;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.page-link2{
+    z-index: 3;
+    color: #fff;
+}
+
+.page-item.active .page-link2 {
+    background-color: gray;
+    color: white;
+    font-weight: bold;
+}
+
+.page-item .page-link2:hover {
+    background-color: #333333;
+
+    transform: translateY(-2px);
+}
+
+/* "문의 작성" 버튼 스타일 */
+.ibtn {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.ibtn .btn {
+    padding: 12px 24px;
+    background-color: gray;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.ibtn .btn:hover {
+    background-color: darkgrey;
+    transform: translateY(-2px);
+}
+
+/* 전체 페이지 레이아웃 */
+.iForm_wrap {
+    width: 1000px;
+    margin: 50px auto;
+    padding: 40px 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 제목 스타일 */
+.h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* 입력 그룹 공통 스타일 */
+.input-group {
+
+    border-radius: 15px;
+}
+
+.input-group-prepend {
+    background-color: #f1f1f1;
+    border-right: 1px solid #ddd;
+}
+
+.input-group-text {
+    font-weight: 500;
+    color: #555;
+}
+
+/* 제목 입력란 */
+.form-control {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: gray;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+/* 텍스트영역 스타일 */
+textarea.form-control {
+    resize: vertical;
+}
+
+/* 오류 메시지 스타일 */
+.fieldError {
+    color: #e74c3c;
+    font-size: 0.875rem;
+    margin-top: 5px;
+}
+
+/* 제출 버튼 */
+.btn-write {
+    padding: 12px 24px;
+    background-color: gray;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    width: 130px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn-write:hover {
+    background-color: gray;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+
+/* 추가적인 스타일 조정 */
+.product_detail {
+    margin-bottom: 20px;
+}
+
+
+.product_Dtext {
+    font-size: 1rem;
+    border-radius: 5px;
+    padding: 12px;
+}
+
+.inputbox{
+    margin-bottom: 20px;
+}
+
+/* 입력 폼의 그룹 스타일 */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #495057;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.form-control-plaintext {
+    font-size: 16px;
+    color: #6c757d;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    background-color: #f8f9fa;
+    pointer-events: none; /* 수정 불가 */
+}
+
+.btn-modify{
+    background-color:#cbc9ca ;
+}

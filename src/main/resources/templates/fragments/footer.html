@@ -1,7 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<div class="footer" th:fragment="footer">
+  <footer >
+    <div th:class="f_left">
+      <a>
+        <img class="logo_img" th:src="@{/image/logo.png}" alt="logo">
+        <h4>MuseOn</h4>
+      </a>
+    </div>
 
-  <div th:fragment="footer">
-    footer 영역입니다.
-  </div>
+    <div th:class="f_center">
+      <a href="https://github.com/project-record-shop/Joyful.git">
+        https://github.com/project-record-shop/Joyful.git
+      </a>
+
+      <p>ⓒspring-boot project record_shop[MuseOn]</p>
+    </div>
+
+    <div th:class="f_right">
+        <h5>Members</h5>
+      <div th:class="member_box">
+        <a href="https://github.com/seoyoungkyung/hope.git">
+          <img th:class="member" th:src="@{/image/icon2.png}" alt="logo">
+          <p>서영경</p>
+        </a>
+        <a href="https://github.com/project-record-shop/Joyful.git">
+          <img th:class="member" th:src="@{/image/icon5.png}" alt="logo">
+          <p>박소영</p>
+        </a>
+        <a href="https://github.com/jonghojo/Joyful.git">
+          <img th:class="member" th:src="@{/image/icon.png}" alt="logo">
+          <p>조종호</p>
+        </a>
+      </div>
+
+    </div>
+
+  </footer>
+</div>
 </html>

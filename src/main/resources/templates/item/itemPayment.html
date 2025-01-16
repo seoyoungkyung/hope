@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+
+<th:block layout:fragment="css">
+    <link th:href="@{/css/payment.css}" rel="stylesheet">
+</th:block>
+
+<th:block layout:fragment="script">
+    <script th:src="@{/js/itempayment.js}" ></script>
+</th:block>
+
+<div layout:fragment="content">
+
+
+    <div class="payment_wrap">
+
+        <p class="pay_h2">결제 페이지</p>
+
+        <div class="product_box">
+
+          <table class="table payment_table">
+            <colgroup>
+              <col width="80%"/>
+              <col width="20%"/>
+            </colgroup>
+            <thead>
+            <tr class="text-center">
+              <td class="product_name">상품정보</td>
+              <td>상품금액</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="cartItem : ${cartItems}">
+              <td class="d-flex pay_left">
+                <div class="repImgDiv align-self-center">
+                  <img th:src="${cartItem.imgUrl}" class="rounded repImg" th:alt="${cartItem.itemNm}">
+                </div>
+                <div class="align-self-center">
+                  <span th:text="${cartItem.itemNm}" class="fs24 font-weight-bold"></span>
+                  <div class="fs18 font-weight-light">
+                        <span class="input-group mt-2">
+                            <span th:id="'price_' + ${cartItem.cartItemId}"
+                                  th:data-price="${cartItem.price}"
+                                  th:text="${cartItem.price} + '원'" class="align-self-center mr-2 price">
+                            </span>
+                            <span th:id="'count_' + ${cartItem.cartItemId}" class="count-value" th:text="${cartItem.count} + ' 개'">
+                                0 개
+                            </span>
+                        </span>
+                  </div>
+                </div>
+              </td>
+              <td class="text-center align-middle">
+                <span th:id="'totalPrice_' + ${cartItem.cartItemId}"
+                      th:text="${cartItem.price * cartItem.count} + '원'">
+                </span>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+
+          <div class="delivery-notice">
+            <p class="delivery-h4">배송지 정보</p>
+
+              <form action="#" th:action="@{/members/payment}" method="POST">
+                  <div class="delivery-box">
+                      <div class="delivery-boxin">
+                          <label for="nickName">닉네임</label>
+                          <input type="text" id="nickName" name="nickName" th:value="${memberModifyFormDto.nickName}" required>
+                      </div>
+
+                      <div class="delivery-boxin">
+                          <label for="phoneNumber">핸드폰 번호</label>
+                          <input type="tel" id="phoneNumber" name="phoneNumber" th:value="${memberModifyFormDto.phoneNumber}" required>
+                      </div>
+
+                      <div class="delivery-boxin">
+                          <label for="address">주소</label>
+                          <input type="text" id="address" name="address" th:value="${memberModifyFormDto.address}" required>
+                      </div>
+                  </div>
+
+                  <!-- selectedCartItems를 hidden 필드로 전달 -->
+                  <input type="hidden" name="selectedCartItems" th:value="${selectedCartItems != null ? selectedCartItems : ''}" required>
+
+                  <button type="submit" class="modify_btn">배송지 수정</button>
+              </form>
+
+              <div class="pay_method">
+
+                  <p class="method_h4">결제 방법</p>
+                  <img src="/image/right-arrow.png" class="right_arrow" alt="오른쪽 화살표">
+
+                  <div class="pay_method_box">
+
+                      <p class="kakaopay_img" id="kakaoPayImg">
+                          <img src="/image/kakaoPay.png" alt="카카오페이">
+                      </p>
+
+                      <p class="kakaopay_img inicisPay" id="inicisPayImg">
+                          <img src="/image/KGinicis.png"  alt="KG이니시스">
+                      </p>
+
+                  </div>
+              </div>
+
+
+              <div id="message"
+                   th:data-success-message="${successMessage}"
+                   th:data-error-message="${errorMessage}">
+              </div>
+
+          </div>
+
+
+
+          <div class="final_pay">
+
+            <div class="totalPrice mt-3 bottom total_pay">
+              <h3 class="totalPrice">
+                총 결제 금액 : <span id="orderTotalPrice" class="text-danger">0원</span>
+              </h3>
+            </div>
+              <input type="hidden" name="selectedCartItems" id="selectedCartItems" th:value="${selectedCartItems}" />
+              <button type="button" class="payment_btn" id="paymentBtn">결제하기</button>
+          </div>
+
+        </div>
+
+        <input type="hidden" id="buyerEmail" th:value="${member.getEmail()}">
+        <input type="hidden" id="buyerName" th:value="${member.getName()}">
+        <input type="hidden" id="buyerTel" th:value="${member.getPhoneNumber()}">
+        <input type="hidden" id="buyerAdd" th:value="${member.getAddress()}">
+    </div>
+</div>

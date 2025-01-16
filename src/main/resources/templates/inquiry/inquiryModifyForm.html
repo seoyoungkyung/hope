@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+
+<th:block layout:fragment="css">
+  <link th:href="@{/css/inquiry.css}" rel="stylesheet">
+</th:block>
+
+<th:block layout:fragment="script">
+  <script th:src="@{/js/inquiry.js}"></script>
+</th:block>
+
+<div layout:fragment="content">
+
+  <div class="back2">
+    <img src="/image/back3.jpg" alt="뒤로가기" onclick="history.back(-1)" class="back2I">
+  </div>
+
+  <div class="iForm_wrap">
+    <form role="form" method="post" enctype="multipart/form-data" th:object="${inquiryFormDto}">
+
+      <p class="h2">문의글 수정</p>
+
+      <input type="hidden" th:field="*{id}">
+
+      <!-- 문의 제목 -->
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">제목</span>
+        </div>
+        <input type="text" th:field="*{title}" class="form-control" placeholder="문의 제목을 입력해주세요">
+      </div>
+      <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="fieldError">Incorrect data</p>
+
+      <!-- 문의 내용 -->
+      <div class="input-group product_detail">
+        <div class="input-group-prepend product_Dname">
+          <span class="input-group-text">내용</span>
+        </div>
+        <textarea class="form-control product_Dtext" aria-label="With textarea" th:field="*{content}" placeholder="문의 내용을 입력해주세요" rows="5"></textarea>
+      </div>
+      <p th:if="${#fields.hasErrors('content')}" th:errors="*{content}" class="fieldError">Incorrect data</p>
+
+<!--      &lt;!&ndash; 이미지 업로드 &ndash;&gt;-->
+<!--      <div th:if="${#lists.isEmpty(inquiryFormDto.inquiryImgDtoList)}">-->
+<!--        <div class="form-group" th:each="num: ${#numbers.sequence(1,5)}">-->
+<!--          <div class="custom-file img-div">-->
+<!--            <input type="file" class="custom-file-input" name="inquiryImgFile">-->
+<!--            <label class="custom-file-label" th:text="'문의 이미지 ' + ${num}"></label>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div th:if="${not #lists.isEmpty(inquiryFormDto.inquiryImgDtoList)}">-->
+<!--        <div class="form-group" th:each="inquiryImgDto, status: ${inquiryFormDto.inquiryImgDtoList}">-->
+<!--          <div class="custom-file img-div">-->
+<!--            <input type="file" class="custom-file-input" name="inquiryImgFile">-->
+<!--            <input type="hidden" name="inquiryImgIds" th:value="${inquiryImgDto.id}">-->
+<!--            <label class="custom-file-label" th:text="${not #strings.isEmpty(inquiryImgDto.oriImgName)} ? ${inquiryImgDto.oriImgName} : '문의 이미지 ' + ${status.index+1}"></label>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+      <!-- 작성 완료 버튼 -->
+      <div class="form-buttons">
+        <button type="submit" class="btn btn-warning">수정완료</button>
+      </div>
+
+    </form>
+  </div>
+
+
+
+</div>
+
+</html>

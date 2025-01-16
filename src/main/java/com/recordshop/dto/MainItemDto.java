@@ -1,10 +1,15 @@
 package com.recordshop.dto;
 
 import com.querydsl.core.annotations.QueryProjection;
+import com.recordshop.constant.Category;
+import com.recordshop.entity.Item;
+import com.recordshop.entity.ItemImg;
+import com.recordshop.entity.QItemImg;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
-@Setter@Getter
+@Setter@Getter @ToString
 public class MainItemDto {
 
     private Long id;
@@ -17,13 +22,17 @@ public class MainItemDto {
 
     private Integer price;
 
-    @QueryProjection
-    public MainItemDto(Long id, String itemNm, String itemDetail, String imgUrl, Integer price) {
-        this.id = id;
-        this.itemNm = itemNm;
-        this.itemDetail = itemDetail;
-        this.imgUrl = imgUrl;
-        this.price = price;
+    private Category category;
 
+    @QueryProjection
+    public MainItemDto(Item item, ItemImg imgUrl) {
+        this.id = item.getId();
+        this.itemNm = item.getItemNm();
+        this.itemDetail = item.getItemDetail();
+        this.imgUrl = imgUrl.getImgUrl();
+        this.price = item.getPrice();
+        this.category = item.getCategory();
     }
+
+
 }

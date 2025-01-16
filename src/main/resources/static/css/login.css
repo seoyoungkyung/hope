@@ -1,0 +1,310 @@
+
+form{
+
+    margin: 20px auto;
+}
+.form-group{
+    margin-top: 1rem;
+    text-align: left;
+}
+.bottomB{
+    width: 550px;
+
+    margin: 0 auto;
+}
+
+.title{
+    text-align: center;
+}
+
+.Log{
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    margin-left: 5px;
+}
+
+.new{
+    text-align: center;
+    background: bisque;
+    width: 400px;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 15px;
+}
+.intro{
+    width: 1000px;
+    display: flex;
+    margin: 100px auto;
+    border-radius: 40px;
+    background: #fffefa;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.leftForm{
+    width: 360px;
+    background-color: antiquewhite;
+    border-radius: 40px 0 0 40px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.loginI{
+    padding: 20px;
+    height: 300px;
+}
+.rightForm{
+
+    padding: 30px;
+    margin: 10px auto;
+}
+
+.leftForm  >p{
+    margin:0 30px;
+}
+
+.logoNm{
+    text-align: center;
+    margin: 30px auto;
+}
+
+.modify{
+    width: 500px;
+    margin: 0 auto;
+}
+.bar{
+    margin: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.new2{
+    text-align: center;
+    background: #ffe4ed;
+    width: 450px;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 15px;
+}
+.back{
+    width: 300px;
+}
+
+label{
+    display: flex;
+    margin: 5px auto;
+    width: 40%;
+}
+
+.fieldError {
+    color: #bd2130;
+}
+
+
+.loginB {
+    width: 73%;
+    margin-bottom: 5px;
+    background: darkgray;
+}
+.loginB:hover {
+    background-color: #919293;
+}
+.logoutB {
+    width: 73%;
+    font-size: 15px;
+    background: lightsteelblue;
+}
+.logoutB:hover {
+    background-color: #a0b5cf;
+}
+
+.sign{
+    width: 1000px;
+    display: flex;
+    margin: 100px auto;
+    border-radius: 40px;
+    background: #fffefa;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.l_sign{
+    width: 350px;
+    background-color: #FFD700;
+    border-radius: 40px 0 0 40px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.r_sign{
+    width: 650px;
+}
+.TAG{
+    display: block;
+    width: 60%;
+    text-align: center;
+}
+.form-box{
+    width: 500px;
+    margin: 50px auto;
+}
+
+.btns{
+    width: 500px;
+    text-align: right;
+}
+
+.signlogo{
+    height: 200px;
+    margin: 10px auto;
+}
+
+.fieldError{
+    width: 100%;
+    text-align: end;
+}
+
+.logform{
+    text-align: left;
+}
+.logb{
+    display: flex;
+    width: 400px;
+    margin: 20px auto;
+}
+
+.weblogin{
+    display: flex;
+    width: 550px;
+    flex-direction: column;
+}
+.k_login1 {
+    width: 390px;
+    height: 45px;
+    border-radius: 5px;
+    background-color: #fee500;
+    margin: 10px auto;
+}
+.k_login2 {
+    width: 390px;
+    height: 45px;
+    border-radius: 5px;
+    background-color: #03c75a;
+    margin: 0 auto 10px;
+
+}
+.k_login2-1{
+    width: 230px;
+    height: 45px;
+}
+.k_login3 {
+    width: 390px;
+    height: 45px;
+    border-radius: 5px;
+    background-color: #f2f2f2;;
+    margin: 0 auto;
+}
+.k_login3-1{
+    width: 200px;
+    height: 45px;
+}
+/*회원 정보 수정 new*/
+.modifyForm_wrap {
+    width: 1100px;
+    height: 700px;
+    margin: 0 auto 30px;
+    display: flex;
+    align-items: center;
+}
+
+.modify_design {
+    width: 40%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /*background-color: #fdefff;*/
+    background-color: #fdf8a9;
+    border-radius: 30px 0 0 30px;
+    box-shadow: 2px 4px 4px 0px #dfdfdf;
+}
+
+.modify_design img {
+    width: 200px;
+    margin-bottom: 15px;
+}
+
+.modify_active {
+    width: 60%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /*background-color: #fdfaff;*/
+    background-color: #fffffa;
+    border-radius: 0 30px 30px 0;
+    box-shadow: 2px 4px 4px 0px #dfdfdf;
+}
+
+.m_form {
+    width: 450px;
+    margin: 0 !important;
+}
+
+.m_btnBox {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.btn-withdrawal {
+    width: 100px;
+    border: 1px solid #b43528;
+    color: #972d22;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-withdrawal:hover {
+    color: #ff595f;
+    background-color: rgb(245 202 204 / 77%);
+    animation: shake 0.5s ease-in-out infinite;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(5px); }
+}
+
+.btn-danger {
+    width: 100%;
+    background-color: #e52a30;
+    border-color: #e52a30;
+}
+
+.btn-withdrawal-box {
+    width: 450px;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 5px;
+}
+
+.m_label {
+    width: 100%;
+}
+
+.mw_form {
+    width: 450px;
+    margin: 0 !important;
+    display: flex;
+    justify-content: flex-end;
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+
+<th:block layout:fragment="css">
+    <link th:href="@{/css/inquiry.css}" rel="stylesheet">
+</th:block>
+
+<th:block layout:fragment="script">
+    <script th:src="@{/js/inquiry.js}"></script>
+</th:block>
+
+<div layout:fragment="content">
+
+    <div class="back2">
+        <img src="/image/back3.jpg" alt="뒤로가기" onclick="history.back(-1)" class="back2I">
+    </div>
+
+    <div th:class="mypage_wrap">
+
+        <div class="write">
+            <h1>1:1 문의</h1>
+        </div>
+
+        <div class="statusFilterWrapper">
+            <ul class="statusFilter">
+                <li class="statusItem">
+                    <a th:href="@{'/inquiries/list'}">전체 문의</a>
+                </li>
+                <li class="statusItem">
+                    <a th:href="@{'/inquiries/list?answerStatus=WAITING'}"
+                       th:classappend="${answerStatus == 'WAITING' ? 'active' : ''}">답변 대기</a>
+                </li>
+                <li class="statusItem">
+                    <a th:href="@{'/inquiries/list?answerStatus=COMPLETED'}"
+                       th:classappend="${answerStatus == 'COMPLETED' ? 'active' : ''}">답변 완료</a>
+                </li>
+            </ul>
+        </div>
+
+
+        <table class="table">
+            <thead class="table-text">
+            <tr>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>등록일</th>
+                <th>수정일</th>
+                <th>답변상태</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="inquiry : ${inquiryList}">
+                <td>
+                    <a th:href="'/inquiries/' + ${inquiry.id}" th:text="${inquiry.title}"></a>
+                </td>
+                <td th:text="${inquiry.member.username}"></td> <!-- 작성자 -->
+                <td th:text="${inquiry.formattedRegTime}"></td> <!-- 작성날자 -->
+                <td th:text="${inquiry.formattedUpdateTime}"></td> <!-- 수정날자 -->
+                <td>
+                    <span th:text="${inquiry.answerStatus == 'WAITING' ? '답변 대기' : (inquiry.answerStatus == 'COMPLETED' ? '답변 완료' : inquiry.answerStatus)}"></span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div th:with="start=${(inquiryList.number/maxPage)*maxPage + 1}, end=(${(inquiryList.totalPages == 0) ? 1 : (start + (maxPage - 1) < inquiryList.totalPages ? start + (maxPage - 1) : inquiryList.totalPages)})" >
+            <ul class="pagination justify-content-center mb-3">
+                <li class="page-item" th:classappend="${inquiryList.number eq 0}?'disabled':''">
+                    <a th:href="@{'/inquiries/list' + '?answerStatus=' + ${answerStatus != null ? answerStatus : ''} + '&page=' + ${inquiryList.number-1}}" aria-label='Previous' class="page-link2">
+                        <span aria-hidden='true'>이전</span>
+                    </a>
+                </li>
+
+                <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${inquiryList.number eq page - 1}?'active':''">
+                    <a th:href="@{'/inquiries/list' + '?answerStatus=' + ${answerStatus != null ? answerStatus : ''} + '&page=' + ${page - 1}}" th:inline="text" class="page-link2">[[${page}]]</a>
+                </li>
+
+                <li class="page-item" th:classappend="${inquiryList.number+1 ge inquiryList.totalPages}?'disabled':''">
+                    <a th:href="@{'/inquiries/list' + '?answerStatus=' + ${answerStatus != null ? answerStatus : ''} + '&page=' + ${inquiryList.number+1}}" aria-label='Next' class="page-link2">
+                        <span aria-hidden='true'>다음</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 페이지 하단 중앙에 "문의 작성" 버튼 -->
+        <div class="ibtn" style=" text-align: center">
+            <a href="/inquiries/new">
+                <button class="btn btn-primary2">문의 작성</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+</html>

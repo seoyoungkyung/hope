@@ -1,14 +1,15 @@
 #wrap {
-    width: 1440px;
+    width: 1270px;
     height: auto;
     margin: 0 auto;
-    background-color: antiquewhite;
+    position: relative;
 }
 
 .mainImg_box {
     width: 100%;
-    height: 750px;
+    height: 700px;
     margin: 0 auto;
+    position: relative;
 }
 
 .main_img {
@@ -19,18 +20,81 @@
 main {
     width: 100%;
     height: auto;
-    background-color: aliceblue;
+    /*background-color: aliceblue;*/
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     position: relative;
+    margin-top: 30px;
 }
 
 .category {
-    width: 100%;
+    width: 150px;
     height: 100px;
-    text-align: center;
-    margin-top: 50px;
+    font-size: 40px;
+    font-weight: bolder;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin-top: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.category:nth-of-type(2) {
+    width: 250px;
+    height: 100px;
+    font-size: 40px;
+    font-weight: bolder;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin-top: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.category:before {
+    content: '';
+    position: absolute;
+    top: 67%;
+    left: 0;
+    width: 30%;
+    height: 17px;
+    background-color: #c7a4f5;
+    z-index: -1;
+    animation: highlight 4s linear infinite;
+}
+
+.category.album:before {
+    background-color: #6cf3c3;
+}
+
+.category.dvd:before {
+    background-color: #faff58;
+}
+
+@keyframes highlight {
+    0% {
+        width: 0; /* 애니메이션 시작 시 길이 0 */
+    }
+    50% {
+        width: 100%; /* 중간 지점에서 전체 텍스트를 칠함 */
+    }
+    100% {
+        width: 0; /* 애니메이션 끝날 때 형광펜이 사라짐 */
+    }
+}
+
+.plus{
+    width: 100%;
+    height: 80px;
+    text-align: right;
+    margin-right: 15px;
+}
+
+.plusImg{
+    height: 50px;
 }
 
 .section_wrap {
@@ -39,43 +103,236 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
 }
 
 section {
-    width: 23%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+section a {
+    width: 90%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.section_in {
-    width: 85%;
-    height: 85%;
-    border: 2px solid #666;
-    border-radius: 10px;
+section a:hover {
+    text-decoration: none;
+    color: #333333;
+}
+
+.height_box {
+    width: 95%;
+    height: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+}
+
+.height_box img {
+    width: 205px !important;
+    height: 205px !important;
+    margin-bottom: 10px;
+    object-fit: contain !important;
+}
+
+.height_box h4 {
+    margin-bottom: 0;
+}
+
+.price {
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.itemNm {
+    font-size: 13px;
+    margin-bottom: 0;
+    color: #7f7f7f;
+    padding: 0 20px;
+}
+
+.section_in {
+    width: 95%;
+    height: 95%;
+    border: 2px solid #666;
+    border-radius: 10px;
     background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 section img {
-    width: 80%;
+    width: 75%;
     height: auto;
     border: 1px solid #eee;
+}
+
+.icon_box {
+    width: 75%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.bi-caret-left::before {
+    font-size: 28px;
+}
+
+.bi-pause::before {
+    font-size: 28px;
+}
+
+.bi-caret-right::before {
+    font-size: 28px;
 }
 
 .banner {
     width: 100%;
     height: 500px;
-    margin: 30px 0 20px 0;
+    margin: 80px 0 70px 0;
 }
 
 .banner img {
     width: 100%;
     height: 100%;
 }
+
+.long_box_wrap {
+    width: 1200px;
+    height: 120px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 60px;
+}
+
+.long_box {
+    width: 3600px; /* 원하는 크기로 설정 */
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.long_img {
+    width: 1200px;
+
+}
+
+.long_img img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease-in-out;
+    border-radius: 15px;
+}
+
+.button-next, .button-prev {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.button-next {
+    right: 2%;
+    border-radius: 100%;
+    border: 1px solid #949494;
+    padding: 10px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    background: rgb(235 235 235 / 65%);
+    box-shadow: 1px 1px 2px #6d6d6d;
+}
+
+.button-next img {
+    width: 100%;
+}
+
+.button-prev {
+    left: 2%;
+    border-radius: 100%;
+    border: 1px solid #949494;
+    padding: 10px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    background: rgb(235 235 235 / 65%);
+    box-shadow: 1px 1px 2px #6d6d6d;
+}
+
+.button-prev img {
+    width: 100%;
+}
+
+
+.swiper-container-custom {
+    width: 1350px;
+    height: 450px;
+    overflow: hidden;
+}
+
+.swiper-slide.swiper-slide-active {
+    width: 25%;
+    display: flex;
+
+}
+
+.item-detail-wrapper {
+    width: 80%;
+    font-size: 15px;
+    overflow: hidden;              /* 넘치는 부분은 보이지 않게 */
+    position: relative;            /* 상대 위치로 내부 요소의 배치를 조정 */
+    font-weight: 700;
+}
+
+.item-detail-content {
+    display: inline-block;         /* 인라인 블록으로 텍스트가 이어지도록 */
+    white-space: nowrap;           /* 텍스트를 한 줄로만 표시 */
+    animation: slide-text 10s linear infinite; /* 슬라이드 애니메이션 */
+    animation-timing-function: linear;  /* 애니메이션의 속도를 일정하게 설정 */
+    float: left;
+}
+
+/* 슬라이드 애니메이션 */
+@keyframes slide-text {
+    0% {
+        transform: translateX(100%); /* 처음에는 오른쪽 끝으로 시작 */
+        opacity: 0; /* 처음에는 보이지 않도록 설정 */
+    }
+    50% {
+        opacity: 1; /* 중간 지점에서 텍스트가 보이도록 */
+    }
+    100% {
+        transform: translateX(-100%); /* 끝까지 왼쪽으로 슬라이드 */
+        opacity: 0; /* 끝에는 사라지도록 설정 */
+    }
+}
+
+/* 텍스트가 슬라이드되면서 자연스럽게 나타나는 효과 */
+@keyframes fade-in-out {
+    0% {
+        opacity: 0; /* 처음에는 투명 */
+    }
+    30% {
+        opacity: 1; /* 슬라이드가 시작될 때부터 빠르게 나타나도록 */
+    }
+    60% {
+        opacity: 1; /* 텍스트가 슬라이드 중에도 계속 보이도록 */
+    }
+    100% {
+        opacity: 0; /* 슬라이드 끝날 때 텍스트가 다시 사라지도록 */
+    }
+}
+
+
+
 

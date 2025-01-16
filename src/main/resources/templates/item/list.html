@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+
+<th:block layout:fragment="css">
+    <link th:href="@{/css/list.css}" rel="stylesheet">
+</th:block>
+
+<th:block layout:fragment="script">
+    <script th:src="@{/js/item.js}"></script>
+</th:block>
+
+
+<div layout:fragment="content">
+
+    <div class="back2">
+        <a th:href="@{/}">
+            <img src="/image/back3.jpg" alt="뒤로가기" onclick="history.back(-1)" class="back2I">
+        </a>
+    </div>
+
+
+    <div class="searchBox">
+        <form class="form-inline " th:action="@{/item/list}" method="get">
+            <input name="searchQuery" class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+
+    <div>
+        <ul  class="categoryB">
+            <li class="categoryI">
+                <a th:href="@{'/item/list'}">ALL</a>
+            </li>
+            <li class="categoryI">
+                <a th:href="@{'/item/list?category=LP'}" th:classappend="${category == 'LP' ? 'active' : ''}">LP</a>
+            </li>
+            <li class="categoryI">
+                <a th:href="@{'/item/list?category=ALBUM'}" th:classappend="${category == 'ALBUM' ? 'active' : ''}">ALBUM</a>
+            </li>
+            <li class="categoryI">
+                <a th:href="@{'/item/list?category=DVD'}" th:classappend="${category == 'DVD' ? 'active' : ''}">DVD</a>
+            </li>
+        </ul>
+
+    </div>
+
+
+    <input type="hidden" name="searchQuery" th:value="${itemSearchDto.searchQuery}">
+    <div th:if="${not #strings.isEmpty(itemSearchDto.searchQuery)}" class="center">
+        <p class="h4 font-weight-bold output" th:text="${itemSearchDto.searchQuery} + '검색 결과'"></p>
+    </div>
+
+    <div class="row">
+        <th:block th:each="item, status: ${items.getContent()}">
+            <div class="col-md-3">
+                <div class="card">
+                    <a th:href="'/item/' +${item.id}" class="text-dark">
+                        <img th:src="${item.imgUrl}" class="card-img-top" th:alt="${item.itemNm}">
+                        <div class="card-body">
+                            <div class="card-body-in">
+                                <p class="card-title">[[${item.itemDetail}]]</p>
+                                <p class="card-text itemNm_text">[[${item.itemNm}]]</p>
+                                <p class="card-title price">[[${item.price}]]원</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </th:block>
+    </div>
+
+    <div th:with="start=${(items.number/maxPage)*maxPage + 1}, end=(${(items.totalPages == 0) ? 1 : (start + (maxPage - 1) < items.totalPages ? start + (maxPage - 1) : items.totalPages)})" class="pagination_wrap">
+        <ul class="pagination justify-content-center mb-3">
+
+            <li class="page-item" th:classappend="${items.number eq 0}?'disabled':''">
+                <a th:href="@{'/item/list' + '?searchQuery=' + ${itemSearchDto.searchQuery != null ? itemSearchDto.searchQuery : ''} + '&category=' + ${category != null ? category : ''} + '&page=' + ${items.number-1}}" aria-label='Previous' class="page-link">
+                    <span aria-hidden='true'>Previous</span>
+                </a>
+            </li>
+
+            <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}" th:classappend="${items.number eq page - 1}?'active':''">
+                <a th:href="@{'/item/list' + '?searchQuery=' + ${itemSearchDto.searchQuery != null ? itemSearchDto.searchQuery : ''} + '&category=' + ${category != null ? category : ''} + '&page=' + ${page - 1}}" th:inline="text" class="page-link">[[${page}]]</a>
+            </li>
+
+            <li class="page-item" th:classappend="${items.number+1 ge items.totalPages}?'disabled':''">
+                <a th:href="@{'/item/list' + '?searchQuery=' + ${itemSearchDto.searchQuery != null ? itemSearchDto.searchQuery : ''} + '&category=' + ${category != null ? category : ''} + '&page=' + ${items.number+1}}" aria-label='Next' class="page-link">
+                    <span aria-hidden='true'>Next</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+
+</html>

@@ -1,5 +1,6 @@
 package com.recordshop.dto;
 
+import com.recordshop.entity.CartItem;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,4 +27,10 @@ public class CartDetailDto {
         this.imgUrl = imgUrl;
 
     }
+
+    @Override
+    public String toString() {
+        return "CartDetailDto{cartItemId=" + cartItemId + ", itemNm='" + itemNm + "', count=" + count + ", price=" + price + '}';
+    }
+
 }

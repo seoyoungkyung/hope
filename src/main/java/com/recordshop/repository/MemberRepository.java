@@ -2,8 +2,18 @@ package com.recordshop.repository;
 
 import com.recordshop.entity.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
-public interface MemberRepository extends JpaRepository<Member, Long> {
+import java.util.Optional;
 
-    Member findByEmail(String email);
+public interface MemberRepository extends JpaRepository<Member, String> {
+
+
+    Member findByPhoneNumber(String phoneNumber);
+
+    Member findByUsername(String username);
+
+
+
+
 }

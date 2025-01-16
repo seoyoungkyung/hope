@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8081
 
 spring:
   datasource:
@@ -10,7 +10,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create      #테이블 생성
+      ddl-auto: update  #테이블 생성
 
     properties:
       .hibernate:
@@ -18,17 +18,18 @@ spring:
         format_sql: true    #sql  가독성 좋게 포맷팅
 
     database-platform=org: org.hibernate.dialect.MySQLDialect
-
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
 
   servlet:
     multipart:
       max-file-size: 20MB       #파일 한 개당 최대 사이즈
       max-request-size: 100MB   #요청당 최대 파일 사이즈
 
-itemImgLocation : C:/works/Springbootproject/itemImg    #상품 이미지 업로드 경로
-uploadPath : file:///C:/works/Springbootproject/     #리소스 업로드 경로
-
-
+  config:
+    import: application-secret.yml
 
 logging:
   level:
@@ -37,3 +38,15 @@ logging:
         type:
           descriptor:
             sql: trace
+
+    root: INFO
+
+itemImgLocation: C:/works/Springboot/itemImg    #상품 이미지 업로드 경로
+inquiryImgLocation: C:/works/Springboot/inquiryImg
+uploadPath: file:///C:/works/Springboot/     #리소스 업로드 경로
+
+imp:
+  code: imp55425362
+  api:
+    key: 4215720236773388
+    secretkey: rLUikbwUNtskzCVRjzyZOPbxhCqrAFwdpf7OtMKkw1JRPBiAgyz66r4dkVg4zluYktjzGdPuvhBBRLOl

@@ -3,154 +3,134 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layouts/layout1}">
 
+
 <th:block layout:fragment="css">
     <link th:href="@{/css/main.css}" rel="stylesheet">
+    <link th:href="@{/css/swiper.css}" rel="stylesheet">
 </th:block>
+
+<th:block layout:fragment="script">
+    <script th:src="@{/js/main.js}"></script>
+    <script th:src="@{/js/swiper.js}"></script>
+</th:block>
+
 
 <div layout:fragment="content">
 
-    <div th:class="mainImg_box">
-        <img class="main_img" th:src="@{/images/main_img.jpg}" alt="main_img">
+    <!-- Swiper 컨테이너 -->
+    <div class="swiper-container1 mainImg_box">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <!--h1 th:class="swiper_h1">RECORD SHOP</h1>-->
+                <img class="main_img" th:src="@{/image/main_img4.jpg}" alt="main_img">
+            </div>
+            <div class="swiper-slide">
+                <img class="main_img" th:src="@{/image/main_img3.jpg}" alt="main_img">
+            </div>
+             <div class="swiper-slide">
+                 <img class="main_img" th:src="@{/image/main_img2.jpg}" alt="main_img">
+             </div>
+             <div class="swiper-slide">
+                 <img class="main_img" th:src="@{/image/main_img.jpg}" alt="main_img">
+             </div>
+        </div>
+
+        <!-- 페이지네이션 -->
+        <div class="swiper-pagination"></div>
+
+        <!-- 내비게이션 -->
+        <div class="swiper-button-next swiper-button-next1"></div>
+        <div class="swiper-button-prev swiper-button-prev1"></div>
     </div>
+
 
     <div th:id="wrap" >
 
-
-
         <main>
 
-            <h1 th:class="category">Best LP</h1>
+            <th:block th:each="category, iterStat : ${T(com.recordshop.constant.Category).values()}">
+                <!-- 카테고리 이름을 한 번만 출력하기 위해 조건을 걸어줍니다 -->
+                <th:block th:if="${category == T(com.recordshop.constant.Category).LP}">
+                    <div class="category">Best LP</div>
+                    <a class="plus" th:href="@{/item/list}">
+                        <img class="plusImg" th:src="@{/image/icon_more.png}" alt="더보기">
+                    </a>
+                </th:block>
 
-            <div th:class="section_wrap">
-                <section>
-                    <div th:class="section_in">
-                        <img th:class="v" th:src="@{/images/v.jpg}" alt="v">
-                        <h5>뷔(V) - Layover [컬러 LP]</h5>
-                        <p>52,000원</p>
+                <th:block th:if="${category == T(com.recordshop.constant.Category).ALBUM}" class="long_wrap">
+                    <div class="category album" style="width: 250px">New ALBUM</div>
+                    <a class="plus" th:href="@{/item/list}">
+                        <img class = "plusImg" th:src="@{/image/icon_more.png}" alt="더보기">
+                    </a>
+                </th:block>
+
+                <th:block th:if="${category == T(com.recordshop.constant.Category).DVD}">
+                    <div class="category dvd" style="width: 315px">Commend DVD</div>
+                    <a class="plus" th:href="@{/item/list}">
+                        <img class = "plusImg" th:src="@{/image/icon_more.png}" alt="더보기">
+                    </a>
+                </th:block>
+
+                <!-- 해당 카테고리에 속하는 아이템만 필터링하여 출력 -->
+                <div class="section_wrap swiper-container-custom" id="swiper-container-${iterStat.index}">
+                    <div class="swiper-wrapper">
+                        <th:block th:each="item : ${items}" th:if="${item.category == category}">
+                            <div class="swiper-slide">
+                                <section>
+                                    <a th:href="'/item/' + ${item.id}">
+                                        <div class="section_in">
+                                            <div th:class="height_box">
+                                                <img th:src="@{${item.imgUrl}}" alt="상품 이미지">
+
+                                                <div class="item-detail-wrapper">
+                                                    <div class="item-detail-content" th:text="${item.itemDetail}"></div>
+                                                </div>
+                                                <p th:text="${item.itemNm}" class="itemNm"></p>
+                                                <p class="price">[[${item.price}]]원</p>
+                                            </div>
+                                            <div class="icon_box">
+                                                <i class="bi bi-caret-left"></i>
+                                                <i class="bi bi-pause"></i>
+                                                <i class="bi bi-caret-right"></i>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </section>
+                            </div>
+                        </th:block>
                     </div>
-                </section>
-
-                <section>
-                    <div th:class="section_in">
-                        <img th:class="v" th:src="@{/images/v.jpg}" alt="v">
-                        <h5>뷔(V) - Layover [컬러 LP]</h5>
-                        <p>52,000원</p>
-                    </div>
-                </section>
-
-                <section>
-                    <div th:class="section_in">
-                        <img th:class="v" th:src="@{/images/v.jpg}" alt="v">
-                        <h5>뷔(V) - Layover [컬러 LP]</h5>
-                        <p>52,000원</p>
-                    </div>
-                </section>
-
-                <section>
-                    <div th:class="section_in">
-                        <img th:class="v" th:src="@{/images/v.jpg}" alt="v">
-                        <h5>뷔(V) - Layover [컬러 LP]</h5>
-                        <p>52,000원</p>
-                    </div>
-                </section>
-            </div>
-
-
-            <h1 th:class="category">Best LP</h1>
-
-            <div th:class="section_wrap">
-                <section>
-                    <div th:class="section_in">
-                        <img th:class="v" th:src="@{/images/v.jpg}" alt="v">
-                        <h5>뷔(V) - Layover [컬러 LP]</h5>
-                        <p>52,000원</p>
-                    </div>
-                </section>
-
-                <section>
-                    <div th:class="section_in">
-                        <img th:class="v" th:src="@{/images/v.jpg}" alt="v">
-                        <h5>뷔(V) - Layover [컬러 LP]</h5>
-                        <p>52,000원</p>
-                    </div>
-                </section>
-
-                <section>
-                    <div th:class="section_in">
-                        <img th:class="v" th:src="@{/images/v.jpg}" alt="v">
-                        <h5>뷔(V) - Layover [컬러 LP]</h5>
-                        <p>52,000원</p>
-                    </div>
-                </section>
-
-                <section>
-                    <div th:class="section_in">
-                        <img th:class="v" th:src="@{/images/v.jpg}" alt="v">
-                        <h5>뷔(V) - Layover [컬러 LP]</h5>
-                        <p>52,000원</p>
-                    </div>
-                </section>
-            </div>
-
-            <!--<section>
-                &lt;!&ndash; products 리스트를 반복하며 각 항목을 출력 &ndash;&gt;
-                <div th:each="product : ${products}" th:class="section_wrap">
-                    &lt;!&ndash; 제품 이미지 &ndash;&gt;
-                    <img th:class="v" th:src="@{${product.imageUrl}}" alt="product image">
-                    &lt;!&ndash; 제품 이름 &ndash;&gt;
-                    <h5 th:text="${product.name}"></h5>
-                    &lt;!&ndash; 가격 &ndash;&gt;
-                    <p th:text="${product.price} + '원'"></p>
                 </div>
-            </section>-->
+
+                <!-- long_box는 반복문에 영향을 받지 않도록 반복문 외부에 배치 -->
+                <th:block th:if="${category == T(com.recordshop.constant.Category).ALBUM}">
+                    <div class="long_box_wrap">
+                        <div class="long_box">
+                            <div class="long_img">
+                                <img src="/image/long_1.jpg" alt="긴 배너">
+                            </div>
+                            <div class="long_img">
+                                <img src="/image/long_2.jpg" alt="긴 배너2">
+                            </div>
+                            <div class="long_img">
+                                <img src="/image/long_3.jpg" alt="긴 배너2">
+                            </div>
+                            <div class="button-next">
+                                <img src="/image/right.png" alt="next">
+                            </div>
+                            <div class="button-prev">
+                                <img src="/image/left.png" alt="prev">
+                            </div>
+                        </div>
+                    </div>
+                </th:block>
+            </th:block>
 
             <div th:class="banner">
-
-                <img th:class="banner_img" th:src="@{/images/banner.jpg}" alt="banner_img">
-
+                <img th:class="banner_img" th:src="@{/image/banner.jpg}" alt="banner_img">
             </div>
 
-            <h1 th:class="category">Best LP</h1>
-
-            <div th:class="section_wrap">
-                <section>
-                    <div th:class="section_in">
-                        <img th:class="v" th:src="@{/images/v.jpg}" alt="v">
-                        <h5>뷔(V) - Layover [컬러 LP]</h5>
-                        <p>52,000원</p>
-                    </div>
-                </section>
-
-                <section>
-                    <div th:class="section_in">
-                        <img th:class="v" th:src="@{/images/v.jpg}" alt="v">
-                        <h5>뷔(V) - Layover [컬러 LP]</h5>
-                        <p>52,000원</p>
-                    </div>
-                </section>
-
-                <section>
-                    <div th:class="section_in">
-                        <img th:class="v" th:src="@{/images/v.jpg}" alt="v">
-                        <h5>뷔(V) - Layover [컬러 LP]</h5>
-                        <p>52,000원</p>
-                    </div>
-                </section>
-
-                <section>
-                    <div th:class="section_in">
-                        <img th:class="v" th:src="@{/images/v.jpg}" alt="v">
-                        <h5>뷔(V) - Layover [컬러 LP]</h5>
-                        <p>52,000원</p>
-                    </div>
-                </section>
-            </div>
         </main>
 
-
-
-
     </div>
-      <div></div>
 
 </div>
