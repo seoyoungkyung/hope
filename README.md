@@ -50,6 +50,7 @@
 <img src="https://img.shields.io/badge/kakao-FFCD00?style=for-the-badge&logo=kakao&logoColor=white">
 <img src="https://img.shields.io/badge/naver -03C75A?style=for-the-badge&logo=naver&logoColor=white">
 <img src="https://img.shields.io/badge/google-4285F4?style=for-the-badge&logo=google&logoColor=white">
+<img src="https://img.shields.io/badge/gradle-02303A?style=for-the-badge&logo=gradle&logoColor=white">
 </div>
 <div>
 <h4>Collaboration </h4>  
